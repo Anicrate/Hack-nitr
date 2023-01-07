@@ -1,0 +1,47 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background: url(contactbackground.png) no-repeat;
+    background-size: cover;
+}
+.form-group input {
+    font-family: 'Baloo Bhai 2', cursive;
+    text-align: center;
+    display: block;
+    width: 508px;
+    padding: 15px;
+    border: 2px solid #070000;
+    margin: 30px auto;
+    font-size: 20px;
+    border-radius: 8px;
+}
+.container h1{
+    text-align: center;
+    margin: 10px;
+}
+.container {
+    border: 2px solid rgb(239, 244, 239);
+    margin: 15px auto;
+    padding: 75px;
+    height: 90vh;
+    width: 33%;
+    border-radius: 28px;
+}
+.backimg{
+    height: 50%;
+    width: 100vh;
+    z-index: -1;
+    background-color: transparent;
+}
+.btn{
+    font-size: 25px;
+    margin: 24px;
+    border: 4px solid rgb(94, 122, 120);
+    border-radius: 14px;
+    cursor: pointer;
+    background-color: transparent;
+}
+.btn:hover{
+    background-color: aqua;
+    border: 6px solid aqua;
+}

@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo Bhai 2', cursive;
+}
+a{
+    text-decoration: none;
+}
+p{
+    line-height: 1.5em;
+}
+
+h1{
+    line-height: 80px;
+    font-size: 55px;
+    color: black;
+}
+.para1{
+    font-size: 39px;
+    color: black;
+}
+.para2{
+    font-size: 33px;
+    color: black;
+}
+.secondpara{
+    font-size: 30px;
+color: black;
+
+}
+.best {
+    font-size: 28px;
+color: black;
+
+}
+.navbar {
+    display: flex;
+    height: 100px;
+    justify-content: right;
+    align-items: right;
+    position: sticky;
+    top: 0px;
+    cursor: pointer;
+}
+.logo {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: 100px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border: 3px solid none;
+    border-radius: 20px;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+.heading{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    top: 40px;
+    position: absolute;
+    left: 125px;
+    text-align: left;
+    font-size: 35px;
+}
+
+
+.nav-list li {
+    text-align: right;
+    list-style: none;
+    padding: 29px 35px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    padding: 5px 5px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: brown;
+    font-size: 28px;
+}
+
+.nav-list li a:hover {
+    border: 2px solid black;
+    background-color: rgb(35, 20, 171);
+    color: white;
+}
+.background {
+    background-size: cover;
+    background-blend-mode: darken;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.first{
+    margin-right: auto;
+    margin-left:180px;
+    width: 100vh;
+}
+.first img{
+    height: 200px;
+}
+.nextmain{
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: auto;
+        background-color: whitesmoke;
+}
+
+.nextmain img{
+    height: 300px;
+    color: azure;
+    box-shadow: 5px 7px 8px 2px rgba(131, 23, 115, 0.6);
+}
+
+.small{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.thirdimg{
+    padding: 15px;
+    margin-left: 100px;
+}
+.quote {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 35px;
+}
+.last{
+        border: 4px solid rgb(70, 157, 119);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        background-color: aqua;
+}
+.second p{
+    padding: 10px 10px;
+    font-size: 33px;
+}
+
+.small p{
+    font-size: 30px;   
+}
+button{
+    border-radius: 15px;
+    font-size: 30px;
+    padding: 14px 14px;
+}
+button:hover{
+    background-color: rgb(185, 178, 113);
+    color: aqua;
+}
+.background-first {
+    background: rgba(0, 0, 0,0.0009) url(finalbg.webp) no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+}
+.small .form-heading{
+    font-size: 50px;
+}
+.small p{
+    line-height: 1em;
+}
+.big img{
+    box-shadow: 5px 7px 8px 2px rgb(5, 111, 218);
+}
+.thirdimg img{
+    width: 500px;
+}
+.hear{
+    margin-left: -10px;
+    margin-right: auto;
+
+}
+.hear img{
+    border: 2px solid white;
+    border-radius: 19px;
+    box-shadow: 5px 7px 8px 5px rgb(110, 133, 156);
+}
+.second p{
+    line-height: 1em;
+}
+.small{
+    line-height: 1em;
+}
+.custom{
+    color: darkblue;
+}

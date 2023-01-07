@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="complaintportal.css" />
+</head>
+
+<body>
+  <div class="applybox">
+    <h1>Complaint Form</h1>
+    <form onsubmit="sendemail(); reset; return false">
+      <div class="formcontainer">
+        <div class="formflow">
+          <label for="FName">First Name</label>
+          <input type="text" name="FName" id="FName" placeholder="Enter First Name..." />
+        </div>
+        <div class="formflow">
+          <label for="LName">Last Name</label>
+          <input type="text" name="LName" id="LName" placeholder="Enter Last Name..." />
+        </div>
+        <div class="formflow">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="Enter Email..." />
+        </div>
+        <div class="formflow">
+          <label for="choice">Enter Your Choice</label>
+          <select name="choice" id="choice">
+            <!-- <option value="">Select Topic</option> -->
+            <option value="academic">Academic</option>
+            <option value="financial">Financial</option>
+            <option value="maintanence">Maintanence</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="formflow">
+          <label for="address">Address</label>
+
+          <textarea name="address" id="address" cols="70" rows="3" placeholder="Enter Address..."></textarea>
+        </div>
+
+        <div class="formflow">
+          <label for="Complaint">Enter your Complaint</label>
+
+          <textarea name="complaint" id="complaint" cols="70" rows="3" placeholder="Type here"></textarea>
+        </div>
+
+        <div class="formflow">
+          <label for="contact">Contact Number</label>
+          <input type="number" name="contact" id="contact" placeholder="Enter Your Contact No..." />
+        </div>
+        <div class="formflow">
+          <label for="date">Date</label>
+          <input type="date" name="date" id="date" />
+        </div>
+        <div class="formflow">
+          <label for="proof">Support Document</label>
+          <input type="file" name="proof" id="proof" style="color: aqua;" />
+        </div>
+      </div>
+      <div class="button">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <script>
+    const sendemail = () => {
+      Email.send({
+        Host: "stmp@gmail.com",
+        Username: "",
+        Password: "",
+        To: "",
+        From: document.getElementById("email").value,
+        Subject: "New Complaint Registered",
+        Body:
+          "First Name:" +
+          document.getElementById("FName").value +
+          "<br> Last Name:" +
+          document.getElementById("LName").value +
+          "<br> Email:" +
+          document.getElementById("email").value +
+          "<br> Complaint Description:" +
+          document.getElementById("complaint").value +
+          "<br> Contact:" +
+          document.getElementById("contact").value,
+      }).then((message) => alert("Message Sent"));
+
+
+
+
+    };
+  </script>
+</body>
+
+</html>
