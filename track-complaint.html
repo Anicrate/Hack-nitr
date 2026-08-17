@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track a Complaint — Resolv</title>
+  <meta name="description" content="Look up a complaint by its tracking ID and watch it move from Pending to Resolved." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236d5bf6'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('resolv.theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body data-page="track">
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" data-icon="check"></span>
+        Resolv
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="file-complaint.html" data-nav="file">File a Complaint</a>
+        <a href="track-complaint.html" data-nav="track">Track</a>
+        <a href="community.html" data-nav="community">Community</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="btn-icon theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button"></button>
+        <button class="btn-icon nav-toggle" aria-label="Toggle menu" aria-expanded="false" type="button"></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-bottom:0;">
+      <div class="container narrow" style="text-align:center;">
+        <span class="eyebrow">Real-time status</span>
+        <h1 style="font-size:clamp(1.8rem,4vw,2.6rem); margin-block:1rem .6rem;">Track a Complaint</h1>
+        <p class="lede" style="margin-inline:auto;">Enter the ID you received when filing, or pick from complaints
+          you've already filed on this device.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container narrow">
+        <div class="card form-card">
+          <div class="lookup-box">
+            <div class="search-field" style="flex:1;">
+              <span data-icon="idCard"></span>
+              <input type="text" id="lookupInput" placeholder="e.g. RSV-8F3K2A" style="padding-left:2.4rem;" />
+            </div>
+            <button class="btn btn-primary" id="lookupBtn" type="button">Track<span data-icon="arrowRight"></span></button>
+          </div>
+        </div>
+
+        <div id="resultArea"></div>
+
+        <div class="divider"></div>
+
+        <div class="section-head">
+          <div>
+            <span class="section-tag">This device</span>
+            <h2 style="font-size:1.4rem;">My Complaints</h2>
+          </div>
+          <div class="chip-group" id="statusChips">
+            <button class="chip active" data-filter="all" type="button">All</button>
+            <button class="chip" data-filter="pending" type="button">Pending</button>
+            <button class="chip" data-filter="review" type="button">In Review</button>
+            <button class="chip" data-filter="resolved" type="button">Resolved</button>
+          </div>
+        </div>
+        <div id="myComplaintsList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.5rem;">
+          <span class="brand-mark" data-icon="check" style="width:28px;height:28px;"></span>
+          Resolv
+        </a>
+        <p class="footer-note">A modern, open way to raise, track, and resolve issues that matter.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="file-complaint.html">File a Complaint</a>
+        <a href="track-complaint.html">Track</a>
+        <a href="community.html">Community</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="container">
+      <p class="footer-note" style="margin-top:1.4rem;">© 2026 Resolv · Complaints you file are stored only in your browser's local storage.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/track-complaint.js"></script>
+</body>
+
+</html>

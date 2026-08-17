@@ -2,147 +2,174 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Complaint Forum | www.complaintforum.com</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resolv — Raise it. Track it. Resolved.</title>
+  <meta name="description" content="Resolv is a modern, community-driven way to file complaints, watch them move through resolution in real time, and see what issues your community is raising right now." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236d5bf6'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('resolv.theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<body>
+<body data-page="home">
 
-    <div class="background-first">
-        <nav class="navbar background">
-            <ul class="nav-list">
-                <div class="logo">
-                    <img src="logo.png" alt="logo">
-                </div>
-                <p class="heading">Complaint Forum</p>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#move1" id="click">File Complaint</a></li>
-                <li><a href="#move2">Track Complaint</a></li>
-                <li><a href="Contact Us.html">Contact Us</a></li>
-            </ul>
-        </nav>
-        <section class="main">
-            <div class="first">
-                <h1>Finding it difficult to get your issues resolved ? </h1>
-                <br>
-                <p class="para1">Confused what to do ? 😥🤔</p>
-                <p class="para2">Don't worry we got your back...</p>
-                <br>
-                <p class="secondpara">File a Complaint and forget about the rest</p>
-                <p class="best">✨✨✨ One stop solution - Complaint Forum ✨✨✨</p>
-            </div>
-            <div class="hear"><img src="hear.avif" alt="hear"></div>
-        </section>
-
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" data-icon="check"></span>
+        Resolv
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="file-complaint.html" data-nav="file">File a Complaint</a>
+        <a href="track-complaint.html" data-nav="track">Track</a>
+        <a href="community.html" data-nav="community">Community</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="btn-icon theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button"></button>
+        <button class="btn-icon nav-toggle" aria-label="Toggle menu" aria-expanded="false" type="button" id="navIconBtn"></button>
+      </div>
     </div>
+  </header>
 
-    <section class="nextmain">
-        <div class="second">
-            <p>Steps to file a Complaint</p>
-            <p>1. Go to file complaint</p>
-            <p>2. fill up the form </p>
-            <p>3. Check your complaint under Track Complaint </p>
-            <p>4. Wait for your issues to be resolved👍</p>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">A fresh take on the complaint box</span>
+          <h1>Raise it. Track it. Watch it get Resolved.</h1>
+          <p class="lede">Resolv replaces the paper trail and the dusty suggestion box with a live board: file an
+            issue in under a minute, follow its status in real time, and see what the rest of your community is
+            dealing with right now.</p>
+          <div class="hero-actions">
+            <a href="file-complaint.html" class="btn btn-primary">File a Complaint</a>
+            <a href="community.html" class="btn btn-outline">Browse Community Pulse</a>
+          </div>
         </div>
-        <div class="secondimg">
-            <img src="steps.png" alt="image">
-        </div>
-    </section>
-    <section class="nextmain small" id="move1">
-        <div class="second">
-            <p class="form-heading">Complaint Form</p>
-            <p>Are you in problem??? Don't You worry.</p>
-            <p>Fill this form to resolve issues</p>
-            <a href="#"><button id="click1"><a href="complaintportal.html">Click Here</a></button></a>
-        </div>
-        <div class="secondimg big">
-            <img src="bg100.webp" alt="image">
-        </div>
-    </section>
-    <section class="nextmain " id="move2">
-        <div class="second">
-            <p>Recent Complaints</p>
-
-
-
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed custom" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Complaint-1
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <strong>Regarding mess food</strong> It is been observed that, the quality of food is not
-                            good.
-                            The quantity of the food given is not sufficient. The sanitation is also not being
-                            maintained, even there are not enough food counters.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed custom" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Complaint-2
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <strong>Water and Electricity issue</strong> It is observed that there are frequent
-                            power-cuts in the weekends.
-                            Also, there is shortage of drinking water in the water filters.
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed custom" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseThree" aria-expanded="false"
-                            aria-controls="flush-collapseThree">
-                            Complaint-3
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse"
-                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <strong>Disputes in ownership of bicycles and their theft</strong> It is observed that there
-                            is regular theft of bicycles in Hostel.
-                        </div>
-                    </div>
-                </div>
+        <div class="hero-card fade-in">
+          <div class="mini-row">
+            <span class="mini-icon" style="background:var(--accent-soft);color:var(--accent)" data-icon="fileText"></span>
+            <div>
+              <strong id="heroTotal">—</strong>
+              <div class="footer-note">Complaints filed on this device</div>
             </div>
+          </div>
+          <div class="mini-row">
+            <span class="mini-icon" style="background:var(--success-soft);color:var(--success)" data-icon="checkCircle"></span>
+            <div>
+              <strong id="heroResolved">—</strong>
+              <div class="footer-note">Marked resolved by the SLA engine</div>
+            </div>
+          </div>
+          <div class="mini-row">
+            <span class="mini-icon" style="background:var(--info-soft);color:var(--info)" data-icon="users"></span>
+            <div>
+              <strong id="heroVoices">—</strong>
+              <div class="footer-note">Voices live on Community Pulse</div>
+            </div>
+          </div>
         </div>
-        <div class="secondimg thirdimg">
-            <img src="img2.png" alt="image">
-        </div>
-    </section>
-    <footer>
-        <p class="quote">" A problem well stated is a problem half solved ."</p>
-    </footer>
-    <section class="last">
-        <p>Copyright &copy; www.complaintforum.com</p>
+      </div>
     </section>
 
+    <section>
+      <div class="container">
+        <div class="stat-row" id="statRow">
+          <div class="stat-tile"><div class="value" id="statTotal">—</div><div class="label">Total complaints</div></div>
+          <div class="stat-tile"><div class="value" id="statPending">—</div><div class="label">Pending</div></div>
+          <div class="stat-tile"><div class="value" id="statReview">—</div><div class="label">In review</div></div>
+          <div class="stat-tile"><div class="value" id="statResolved">—</div><div class="label">Resolved</div></div>
+        </div>
+      </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-tag">How it works</span>
+            <h2>From issue to resolution, in four steps</h2>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>File it</h3>
+            <p>Fill a short form with what happened, where, and how urgent it is.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Get an ID</h3>
+            <p>Resolv generates a unique tracking ID the moment you submit — no login needed.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Watch it move</h3>
+            <p>Track status live as it progresses from Pending → In Review → Resolved.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <h3>See the pattern</h3>
+            <p>Public complaints join Community Pulse so recurring issues get visibility and upvotes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-tag">Live right now</span>
+            <h2>Community Pulse</h2>
+            <p>A real-time snapshot of issues the community is raising, pulled dynamically from a public data
+              source and reshaped into complaint threads.</p>
+          </div>
+          <a href="community.html" class="btn btn-outline">View all<span data-icon="arrowRight"></span></a>
+        </div>
+        <div class="complaint-grid" id="pulsePreview">
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.5rem;">
+          <span class="brand-mark" data-icon="check" style="width:28px;height:28px;"></span>
+          Resolv
+        </a>
+        <p class="footer-note">A modern, open way to raise, track, and resolve issues that matter.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="file-complaint.html">File a Complaint</a>
+        <a href="track-complaint.html">Track</a>
+        <a href="community.html">Community</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="container">
+      <p class="footer-note" style="margin-top:1.4rem;">© 2026 Resolv · Built as a reimagined complaint forum. Community
+        feed is powered by a public demo API; complaints you file are stored only in your browser.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/home.js"></script>
 </body>
 
 </html>

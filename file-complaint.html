@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File a Complaint — Resolv</title>
+  <meta name="description" content="File a complaint in under a minute and get an instant tracking ID." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236d5bf6'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('resolv.theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body data-page="file">
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" data-icon="check"></span>
+        Resolv
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="file-complaint.html" data-nav="file">File a Complaint</a>
+        <a href="track-complaint.html" data-nav="track">Track</a>
+        <a href="community.html" data-nav="community">Community</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="btn-icon theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button"></button>
+        <button class="btn-icon nav-toggle" aria-label="Toggle menu" aria-expanded="false" type="button"></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding-bottom: 0;">
+      <div class="container narrow" style="text-align:center;">
+        <span class="eyebrow">Takes about 60 seconds</span>
+        <h1 style="font-size:clamp(1.8rem,4vw,2.6rem); margin-block:1rem .6rem;">File a Complaint</h1>
+        <p class="lede" style="margin-inline:auto;">No account needed. You'll get a unique tracking ID the instant
+          you submit, so you can check on it any time from the Track page.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container narrow">
+
+        <form class="form-card" id="complaintForm" novalidate>
+          <div class="field-row">
+            <div class="field" data-field="firstName">
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="e.g. Asha" autocomplete="given-name" />
+              <span class="error-text">Please enter your first name.</span>
+            </div>
+            <div class="field" data-field="lastName">
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="e.g. Verma" autocomplete="family-name" />
+              <span class="error-text">Please enter your last name.</span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" data-field="email">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+              <span class="error-text">Enter a valid email address.</span>
+            </div>
+            <div class="field" data-field="contact">
+              <label for="contact">Contact number</label>
+              <input type="tel" id="contact" name="contact" placeholder="10-digit number" autocomplete="tel" />
+              <span class="error-text">Enter a valid 10-digit phone number.</span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" data-field="category">
+              <label for="category">Category</label>
+              <select id="category" name="category">
+                <option value="">Select a category…</option>
+              </select>
+              <span class="error-text">Please choose a category.</span>
+            </div>
+            <div class="field" data-field="urgency">
+              <label for="urgency">Urgency</label>
+              <select id="urgency" name="urgency">
+                <option value="low">Low — can wait</option>
+                <option value="medium" selected>Medium — this week</option>
+                <option value="high">High — needs quick attention</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field" data-field="address">
+            <label for="address">Location / address</label>
+            <input type="text" id="address" name="address" placeholder="Where is this happening?" />
+            <span class="error-text">Please add a location.</span>
+          </div>
+
+          <div class="field" data-field="description">
+            <label for="description">Describe your complaint</label>
+            <textarea id="description" name="description" rows="4" placeholder="What happened? Include as much detail as helps someone act on it."></textarea>
+            <span class="hint">Minimum 20 characters.</span>
+            <span class="error-text">Please describe the issue in at least 20 characters.</span>
+          </div>
+
+          <div class="field">
+            <label for="proof">Supporting document <span class="hint">(optional)</span></label>
+            <input type="file" id="proof" name="proof" />
+            <span class="hint">Stored as a filename reference only in this demo — nothing is uploaded anywhere.</span>
+          </div>
+
+          <div class="checkbox-row" style="margin-bottom: 1.4rem;">
+            <input type="checkbox" id="isPublic" name="isPublic" checked />
+            <label for="isPublic">Show this on Community Pulse
+              <span>Public complaints help others see they're not alone — no contact details are ever shown.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Submit complaint<span data-icon="send"></span></button>
+        </form>
+
+        <div class="card form-card success-panel" id="successPanel" hidden>
+          <div class="success-icon" data-icon="checkCircle"></div>
+          <h2>Complaint filed</h2>
+          <p class="lede" style="margin-inline:auto;">Save this ID — you'll need it to track your complaint.</p>
+          <div class="id-chip">
+            <span id="newComplaintId"></span>
+            <button type="button" id="copyIdBtn" aria-label="Copy complaint ID" data-icon="copy"></button>
+          </div>
+          <div class="hero-actions" style="justify-content:center;">
+            <a href="#" class="btn btn-primary" id="trackNowBtn">Track this complaint<span data-icon="arrowRight"></span></a>
+            <button type="button" class="btn btn-outline" id="fileAnotherBtn">File another</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.5rem;">
+          <span class="brand-mark" data-icon="check" style="width:28px;height:28px;"></span>
+          Resolv
+        </a>
+        <p class="footer-note">A modern, open way to raise, track, and resolve issues that matter.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="file-complaint.html">File a Complaint</a>
+        <a href="track-complaint.html">Track</a>
+        <a href="community.html">Community</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="container">
+      <p class="footer-note" style="margin-top:1.4rem;">© 2026 Resolv · Complaints you file are stored only in your browser's local storage.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/file-complaint.js"></script>
+</body>
+
+</html>

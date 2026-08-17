@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Resolv</title>
+  <meta name="description" content="Get in touch with the Resolv team." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236d5bf6'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('resolv.theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body data-page="contact">
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" data-icon="check"></span>
+        Resolv
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="file-complaint.html" data-nav="file">File a Complaint</a>
+        <a href="track-complaint.html" data-nav="track">Track</a>
+        <a href="community.html" data-nav="community">Community</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button class="btn-icon theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button"></button>
+        <button class="btn-icon nav-toggle" aria-label="Toggle menu" aria-expanded="false" type="button"></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container two-col">
+        <div class="contact-info-card">
+          <h3>Let's talk</h3>
+          <p>Not a complaint, just a question, partnership idea, or bug report? Send it here instead.</p>
+          <div class="mini-row">
+            <span class="mini-icon" data-icon="mail"></span>
+            <div><strong>hello@resolv.app</strong><div style="opacity:.85; font-size:.82rem;">Usually replies within a day</div></div>
+          </div>
+          <div class="mini-row">
+            <span class="mini-icon" data-icon="phone"></span>
+            <div><strong>+1 (555) 010-2024</strong><div style="opacity:.85; font-size:.82rem;">Mon–Fri, 9am–6pm</div></div>
+          </div>
+          <div class="mini-row">
+            <span class="mini-icon" data-icon="mapPin"></span>
+            <div><strong>Community Support Desk</strong><div style="opacity:.85; font-size:.82rem;">On-campus, Block A</div></div>
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow">We'd love to hear from you</span>
+          <h1 style="font-size:clamp(1.7rem,3.4vw,2.2rem); margin-block:1rem .3rem;">Contact Us</h1>
+          <p class="lede" style="margin-bottom:1.6rem;">This isn't for tracking a complaint — use <a href="file-complaint.html" style="color:var(--accent); font-weight:700;">File a Complaint</a> for that. This form is for everything else.</p>
+
+          <form class="form-card" id="contactForm" novalidate>
+            <div class="field" data-field="name">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" />
+              <span class="error-text">Please enter your name.</span>
+            </div>
+            <div class="field-row">
+              <div class="field" data-field="email">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" />
+                <span class="error-text">Enter a valid email.</span>
+              </div>
+              <div class="field" data-field="phone">
+                <label for="phone">Phone <span class="hint">(optional)</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="Optional" />
+              </div>
+            </div>
+            <div class="field" data-field="message">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="How can we help?"></textarea>
+              <span class="error-text">Please write a short message (10+ characters).</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send message<span data-icon="send"></span></button>
+          </form>
+
+          <div class="card form-card success-panel" id="contactSuccess" hidden>
+            <div class="success-icon" data-icon="checkCircle"></div>
+            <h2>Message sent</h2>
+            <p class="lede" style="margin-inline:auto;">Thanks for reaching out — we'll get back to you soon.</p>
+            <button type="button" class="btn btn-outline" id="sendAnotherBtn" style="margin-top:1rem;">Send another message</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.5rem;">
+          <span class="brand-mark" data-icon="check" style="width:28px;height:28px;"></span>
+          Resolv
+        </a>
+        <p class="footer-note">A modern, open way to raise, track, and resolve issues that matter.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="index.html">Home</a>
+        <a href="file-complaint.html">File a Complaint</a>
+        <a href="track-complaint.html">Track</a>
+        <a href="community.html">Community</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="container">
+      <p class="footer-note" style="margin-top:1.4rem;">© 2026 Resolv · Messages are stored locally in this demo — no email service is connected.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/contact.js"></script>
+</body>
+
+</html>
