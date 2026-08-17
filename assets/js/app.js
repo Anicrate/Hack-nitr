@@ -71,7 +71,10 @@ const ICON_PATHS = {
 
 export function icon(name, cls = '') {
   const body = ICON_PATHS[name] || ICON_PATHS.alertCircle;
-  return `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+  // width/height="1em" is a fallback so the icon is always reasonably sized
+  // (scales with the surrounding text) even in a spot with no dedicated
+  // "X svg { width: ... }" CSS rule — any such rule still wins the cascade.
+  return `<svg class="${cls}" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
 }
 
 /* ------------------------------- page chrome -------------------------------- */
@@ -172,14 +175,18 @@ export const STATUS_META = {
   resolved: { label: 'Resolved', badge: 'badge-status-resolved', icon: 'checkCircle' },
 };
 
-// Simulated SLA engine: since there's no real backend, a complaint's status
-// advances deterministically with elapsed time so tracking feels alive
-// instead of being permanently "Pending".
-export function computeStatus(createdAtISO) {
-  const mins = (Date.now() - new Date(createdAtISO).getTime()) / 60000;
-  if (mins < 3) return 'pending';
-  if (mins < 10) return 'review';
-  return 'resolved';
+// A complaint is only ever "Resolved" because a person on the Staff Console
+// explicitly resolved it (see updateComplaintStatus below) — never because a
+// clock ran out. The one automatic nudge we allow is acknowledgement: a
+// freshly filed complaint flips from Pending to In Review a couple of
+// minutes after filing, simulating "someone has seen this," which is a
+// reasonable thing to fake. Actually fixing the issue is not.
+const AUTO_REVIEW_MINUTES = 2;
+
+export function effectiveStatus(complaint) {
+  if (complaint.status === 'review' || complaint.status === 'resolved') return complaint.status;
+  const mins = (Date.now() - new Date(complaint.createdAt).getTime()) / 60000;
+  return mins >= AUTO_REVIEW_MINUTES ? 'review' : 'pending';
 }
 
 /* -------------------------------- storage ----------------------------------- */
@@ -214,13 +221,33 @@ export function getComplaints() {
 
 export function saveComplaint(complaint) {
   const all = getComplaints();
-  all.unshift(complaint);
+  all.unshift({ status: 'pending', ...complaint });
   writeJSON(KEYS.complaints, all);
   return complaint;
 }
 
 export function getComplaintById(id) {
   return getComplaints().find((c) => c.id.toLowerCase() === String(id).toLowerCase());
+}
+
+// The only way a complaint's status actually changes after filing — driven
+// by a person acting on the Staff Console, not by elapsed time.
+export function updateComplaintStatus(id, status, note) {
+  const all = getComplaints();
+  const idx = all.findIndex((c) => c.id.toLowerCase() === String(id).toLowerCase());
+  if (idx === -1) return null;
+  const now = new Date().toISOString();
+  const isResolving = status === 'resolved';
+  all[idx] = {
+    ...all[idx],
+    status,
+    statusUpdatedAt: now,
+    resolutionNote: isResolving ? (note?.trim() || all[idx].resolutionNote || '') : all[idx].resolutionNote,
+    resolvedAt: isResolving ? now : null,
+    resolvedBy: isResolving ? 'Staff Console' : null,
+  };
+  writeJSON(KEYS.complaints, all);
+  return all[idx];
 }
 
 export function getContactMessages() {

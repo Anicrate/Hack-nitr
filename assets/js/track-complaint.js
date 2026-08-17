@@ -1,6 +1,6 @@
 import {
   mountChrome, $, $$, icon, escapeHtml, formatDate, formatRelative,
-  getComplaints, getComplaintById, computeStatus, STATUS_META,
+  getComplaints, getComplaintById, effectiveStatus, STATUS_META,
 } from './app.js';
 import { renderEmptyState } from './cards.js';
 
@@ -24,9 +24,10 @@ function timelineHtml(status) {
 }
 
 function renderDetail(c) {
-  const status = computeStatus(c.createdAt);
+  const status = effectiveStatus(c);
   const meta = STATUS_META[status];
   const resultArea = $('#resultArea');
+  const lastUpdate = c.statusUpdatedAt || c.createdAt;
   resultArea.innerHTML = `
     <div class="card detail-card fade-in">
       <div class="detail-head">
@@ -38,13 +39,23 @@ function renderDetail(c) {
       </div>
       <div class="timeline">${timelineHtml(status)}</div>
       <p>${escapeHtml(c.description)}</p>
+      ${status === 'resolved' ? `
+        <div class="checkbox-row" style="align-items:flex-start; margin-top:1.2rem; border-color: var(--success);">
+          ${icon('checkCircle')}
+          <div>
+            <label style="display:block;">Resolution note</label>
+            <span style="display:block;">${escapeHtml(c.resolutionNote || 'Marked resolved — no additional note was left.')}</span>
+          </div>
+        </div>` : `
+        <div class="hint" style="margin-top:1rem;">This complaint hasn't been resolved yet — it changes status only
+          when someone on the <a href="admin.html?id=${encodeURIComponent(c.id)}" style="color:var(--accent); font-weight:700;">Staff Console</a> acts on it, not automatically over time.</div>`}
       <div class="meta-grid">
         <div><div class="k">Filed</div><div class="v">${formatDate(c.createdAt)}</div></div>
         <div><div class="k">Urgency</div><div class="v" style="text-transform:capitalize;">${escapeHtml(c.urgency || '—')}</div></div>
         <div><div class="k">Location</div><div class="v">${escapeHtml(c.address || '—')}</div></div>
         <div><div class="k">Filed by</div><div class="v">${escapeHtml(c.firstName)} ${escapeHtml(c.lastName)}</div></div>
         <div><div class="k">Visibility</div><div class="v">${c.isPublic ? 'Public' : 'Private'}</div></div>
-        <div><div class="k">Last update</div><div class="v">${formatRelative(c.createdAt)}</div></div>
+        <div><div class="k">Last update</div><div class="v">${formatRelative(lastUpdate)}</div></div>
       </div>
     </div>`;
 }
@@ -75,7 +86,7 @@ let activeFilter = 'all';
 const listEl = $('#myComplaintsList');
 
 function renderList() {
-  const all = getComplaints().map((c) => ({ ...c, status: computeStatus(c.createdAt) }));
+  const all = getComplaints().map((c) => ({ ...c, status: effectiveStatus(c) }));
   const filtered = activeFilter === 'all' ? all : all.filter((c) => c.status === activeFilter);
 
   if (all.length === 0) {

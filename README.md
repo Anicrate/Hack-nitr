@@ -14,9 +14,15 @@ all of that with real, working functionality.
 - **File a Complaint** — validated form, generates a unique `RSV-XXXXXX`
   tracking ID, saves to `localStorage`.
 - **Track a Complaint** — look up any ID (or browse everything you've filed
-  on this device) and see a live status timeline. Status advances
-  automatically over time via a small simulated SLA engine, since there's no
-  real backend behind this demo.
+  on this device) and see a live status timeline. A complaint only becomes
+  **Resolved** when someone acts on it in the Staff Console, with a
+  resolution note — never automatically. The one thing that *is* automatic
+  is acknowledgement: a fresh complaint flips from Pending to In Review a
+  couple of minutes after filing.
+- **Staff Console** (`admin.html`) — where complaints actually get worked:
+  move a complaint to In Review, or resolve it with a note. Gated by a
+  passcode (`resolv-staff`) that's explicitly a demo affordance, not real
+  auth — everything here is still local to your browser.
 - **Community Pulse** — a public board of complaint-shaped threads, fetched
   live from [JSONPlaceholder](https://jsonplaceholder.typicode.com) (a free
   public REST API) and normalized into complaints — plus anything you've
@@ -39,6 +45,7 @@ file-complaint.html      Complaint filing form
 track-complaint.html     Lookup + "my complaints" tracker
 community.html           Full Community Pulse board
 contact.html             General contact form
+admin.html                Staff Console — move complaints through review/resolution
 assets/css/styles.css    Design system (light + dark)
 assets/js/app.js         Theme, nav, storage, toasts, icons, shared helpers
 assets/js/api.js         Public data layer (JSONPlaceholder → complaint feed)

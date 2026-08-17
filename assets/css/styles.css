@@ -333,6 +333,24 @@ select:focus, input:focus, textarea:focus { outline: none; border-color: var(--a
 .mini-list-row .title { font-weight: 700; font-size: .93rem; }
 .mini-list-row .sub { color: var(--text-faint); font-size: .78rem; margin-top: .15rem; }
 
+/* ---------- staff console ---------- */
+.admin-card { padding: 1.3rem 1.5rem; display: flex; flex-direction: column; gap: .8rem; }
+.admin-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+.admin-head h3 { font-size: 1.02rem; }
+.admin-meta { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: .82rem; color: var(--text-muted); }
+.admin-meta strong { color: var(--text); }
+.admin-actions { display: flex; flex-wrap: wrap; gap: .6rem; padding-top: .7rem; border-top: 1px solid var(--border); }
+.note-box { display: none; flex-direction: column; gap: .6rem; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: .9rem; margin-top: .3rem; }
+.note-box.open { display: flex; }
+.note-box textarea { min-height: 70px; }
+.note-box .note-actions { display: flex; gap: .6rem; }
+.resolution-banner { display: flex; gap: .6rem; align-items: flex-start; background: var(--success-soft); color: var(--success); border-radius: var(--radius-sm); padding: .8rem .9rem; font-size: .85rem; }
+.resolution-banner strong { display: block; color: var(--text); font-size: .82rem; margin-bottom: .15rem; }
+.resolution-banner > svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+.checkbox-row > svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; color: var(--success); }
+.gate-card { max-width: 380px; margin-inline: auto; text-align: center; padding: 2.2rem 1.8rem; }
+.gate-card .success-icon { background: var(--accent-soft); color: var(--accent); }
+
 /* ---------- chips / filter pills ---------- */
 .chip-group { display: flex; gap: .5rem; flex-wrap: wrap; }
 .chip { padding: .45rem .95rem; border-radius: var(--radius-full); border: 1px solid var(--border); background: var(--bg-elevated); font-size: .82rem; font-weight: 700; color: var(--text-muted); cursor: pointer; }

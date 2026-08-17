@@ -5,8 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Track a Complaint — Resolv</title>
-  <meta name="description" content="Look up a complaint by its tracking ID and watch it move from Pending to Resolved." />
+  <title>Staff Console — Resolv</title>
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Move complaints through review and mark them resolved with a note." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236d5bf6'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
   <script>
     (function () {
@@ -20,7 +21,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
-<body data-page="track">
+<body data-page="admin">
 
   <header class="site-header">
     <div class="container navbar">
@@ -43,35 +44,44 @@
   </header>
 
   <main>
-    <section style="padding-bottom:0;">
-      <div class="container narrow" style="text-align:center;">
-        <span class="eyebrow">Real-time status</span>
-        <h1 style="font-size:clamp(1.8rem,4vw,2.6rem); margin-block:1rem .6rem;">Track a Complaint</h1>
-        <p class="lede" style="margin-inline:auto;">Enter the ID you received when filing, or pick from complaints
-          you've already filed on this device.</p>
+    <section id="gateSection">
+      <div class="container narrow">
+        <div class="card gate-card">
+          <div class="success-icon" data-icon="shieldCheck"></div>
+          <h1 style="font-size:1.4rem;">Staff Console</h1>
+          <p class="lede" style="margin-inline:auto;">This is where complaints actually get resolved — by a person,
+            not a countdown. Enter the staff passcode to continue.</p>
+          <form id="gateForm" style="margin-top:1.2rem; text-align:left;">
+            <div class="field">
+              <label for="passcode">Passcode</label>
+              <input type="password" id="passcode" placeholder="Hint: it's “resolv-staff”" autocomplete="off" />
+              <span class="hint">Demo only — this is a client-side gate with no real authentication behind it, same
+                as the rest of this project. It exists to model the idea of a staff-only area.</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Unlock console</button>
+          </form>
+        </div>
       </div>
     </section>
 
-    <section>
-      <div class="container narrow">
-        <div class="card form-card">
-          <div class="lookup-box">
-            <div class="search-field" style="flex:1;">
-              <span data-icon="idCard"></span>
-              <input type="text" id="lookupInput" placeholder="e.g. RSV-8F3K2A" style="padding-left:2.4rem;" />
-            </div>
-            <button class="btn btn-primary" id="lookupBtn" type="button">Track<span data-icon="arrowRight"></span></button>
-          </div>
+    <section id="consoleSection" hidden style="padding-top: 2rem;">
+      <div class="container">
+        <span class="eyebrow">Staff only</span>
+        <h1 style="font-size:clamp(1.8rem,4vw,2.4rem); margin-block:1rem .6rem;">Staff Console</h1>
+        <p class="lede">Move complaints through the pipeline. A complaint only becomes <strong>Resolved</strong> when
+          you resolve it here — nothing here happens automatically.</p>
+
+        <div class="stat-row" style="margin-top:1.6rem;">
+          <div class="stat-tile"><div class="value" id="cTotal">—</div><div class="label">Total</div></div>
+          <div class="stat-tile"><div class="value" id="cPending">—</div><div class="label">Pending</div></div>
+          <div class="stat-tile"><div class="value" id="cReview">—</div><div class="label">In review</div></div>
+          <div class="stat-tile"><div class="value" id="cResolved">—</div><div class="label">Resolved</div></div>
         </div>
 
-        <div id="resultArea"></div>
-
-        <div class="divider"></div>
-
-        <div class="section-head">
-          <div>
-            <span class="section-tag">This device</span>
-            <h2 style="font-size:1.4rem;">My Complaints</h2>
+        <div class="filters-bar" style="margin-top:1.6rem;">
+          <div class="search-field">
+            <span data-icon="search"></span>
+            <input type="text" id="searchInput" placeholder="Search by ID, category, filer…" />
           </div>
           <div class="chip-group" id="statusChips">
             <button class="chip active" data-filter="all" type="button">All</button>
@@ -80,7 +90,8 @@
             <button class="chip" data-filter="resolved" type="button">Resolved</button>
           </div>
         </div>
-        <div id="myComplaintsList"></div>
+
+        <div id="adminList"></div>
       </div>
     </section>
   </main>
@@ -100,15 +111,14 @@
         <a href="track-complaint.html">Track</a>
         <a href="community.html">Community</a>
         <a href="contact.html">Contact</a>
-        <a href="admin.html">Staff Console</a>
       </nav>
     </div>
     <div class="container">
-      <p class="footer-note" style="margin-top:1.4rem;">© 2026 Resolv · Complaints you file are stored only in your browser's local storage.</p>
+      <p class="footer-note" style="margin-top:1.4rem;">© 2026 Resolv · Staff Console acts only on complaints stored in this browser's local storage.</p>
     </div>
   </footer>
 
-  <script type="module" src="assets/js/track-complaint.js"></script>
+  <script type="module" src="assets/js/admin.js"></script>
 </body>
 
 </html>

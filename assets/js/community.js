@@ -1,6 +1,6 @@
 import {
   mountChrome, $, $$, debounce, CATEGORIES,
-  getComplaints, computeStatus, getVoteBonus, toggleVote, toast,
+  getComplaints, effectiveStatus, getVoteBonus, toggleVote, toast,
 } from './app.js';
 import { fetchCommunityFeed } from './api.js';
 import { renderCard, renderEmptyState, renderErrorState, skeletons } from './cards.js';
@@ -23,7 +23,7 @@ function normalizeLocal(c) {
     title: `${c.category}: ${c.address || 'General concern'}`,
     body: c.description,
     category: c.category,
-    status: computeStatus(c.createdAt),
+    status: effectiveStatus(c),
     createdAt: c.createdAt,
     author: {
       name: authorName,

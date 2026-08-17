@@ -1,4 +1,4 @@
-import { mountChrome, $, $$, getComplaints, computeStatus, toggleVote, toast } from './app.js';
+import { mountChrome, $, $$, getComplaints, effectiveStatus, toggleVote, toast } from './app.js';
 import { fetchCommunityFeed } from './api.js';
 import { renderCard, renderErrorState, skeletons } from './cards.js';
 
@@ -6,7 +6,7 @@ mountChrome();
 
 /* ---------------- local stats ---------------- */
 const local = getComplaints();
-const withStatus = local.map((c) => ({ ...c, status: computeStatus(c.createdAt) }));
+const withStatus = local.map((c) => ({ ...c, status: effectiveStatus(c) }));
 const pending = withStatus.filter((c) => c.status === 'pending').length;
 const review = withStatus.filter((c) => c.status === 'review').length;
 const resolved = withStatus.filter((c) => c.status === 'resolved').length;
