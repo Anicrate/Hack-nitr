@@ -9,6 +9,8 @@ hardcoded "recent complaints," and a contact form wired to `smtp.js` with
 blank credentials (so it never actually sent anything). This version replaces
 all of that with real, working functionality.
 
+For admin - Append admin.html
+
 ## What's here
 
 - **File a Complaint** — validated form, generates a unique `RSV-XXXXXX`
